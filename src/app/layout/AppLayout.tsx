@@ -18,8 +18,8 @@ export function AppLayout() {
   }, []);
 
   return (
-    <main className="app-viewport w-screen overflow-hidden bg-[#F7F7F8]">
-      <div className="flex h-full min-h-0 w-full overflow-hidden bg-white">
+    <main className="app-viewport w-screen overflow-hidden bg-background text-foreground">
+      <div className="flex h-full min-h-0 w-full overflow-hidden bg-background">
         <Sidebar
           collapsed={!canExpandSidebar || sidebarCollapsed}
           canToggle={canExpandSidebar}

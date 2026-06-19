@@ -23,7 +23,7 @@ export function Sidebar({ collapsed, canToggle, onToggle }: SidebarProps) {
   return (
     <aside
       className={cn(
-        "flex h-full shrink-0 flex-col justify-between border-r border-neutral-200 bg-[#FAFAFA] p-4 transition-[width] duration-200",
+        "flex h-full shrink-0 flex-col justify-between border-r border-sidebar-border bg-sidebar text-sidebar-foreground p-4 transition-[width] duration-200",
         collapsed ? "w-[84px]" : "w-[244px]",
       )}
     >
@@ -47,12 +47,18 @@ export function Sidebar({ collapsed, canToggle, onToggle }: SidebarProps) {
           ) : (
             <div className="relative">
               <img src={logoLightTheme} alt="МЕТЭЛ" className="h-[22px] w-auto" />
+              <img
+                src={logoLightTheme}
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 hidden h-[22px] w-auto brightness-0 invert [clip-path:inset(0_0_0_21px)] dark:block"
+              />
               <Button
                 type="button"
                 variant="ghost"
                 size="icon-sm"
                 onClick={onToggle}
-                className="absolute left-0 top-1/2 h-7 w-7 -translate-y-1/2 rounded-md hover:bg-neutral-100/70"
+                className="absolute left-0 top-1/2 h-7 w-7 -translate-y-1/2 rounded-md hover:bg-sidebar-accent"
                 title="Свернуть меню"
                 aria-label="Свернуть меню"
               />
@@ -60,7 +66,7 @@ export function Sidebar({ collapsed, canToggle, onToggle }: SidebarProps) {
           )}
         </div>
 
-        <p className={cn("mb-3 px-3 text-sm text-neutral-500", collapsed && "hidden")}>Меню</p>
+        <p className={cn("mb-3 px-3 text-sm text-muted-foreground", collapsed && "hidden")}>Меню</p>
         <nav className={cn("space-y-1", collapsed && "flex flex-col items-center")}>
           {navItems.map((item) => (
             <NavLink
@@ -69,9 +75,9 @@ export function Sidebar({ collapsed, canToggle, onToggle }: SidebarProps) {
               className={({ isActive }) =>
                 cn(
                   buttonVariants({ variant: "ghost" }),
-                  "h-9 w-full justify-start gap-3 rounded-lg px-3 text-neutral-700",
+                  "h-9 w-full justify-start gap-3 rounded-lg px-3 text-sidebar-foreground",
                   collapsed && "h-11 w-11 justify-center px-0",
-                  isActive && "bg-neutral-100 text-neutral-950",
+                  isActive && "bg-sidebar-accent text-sidebar-accent-foreground",
                 )
               }
               title={item.label}

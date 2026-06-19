@@ -50,15 +50,15 @@ export function ChatList({
   });
 
   return (
-    <section className="flex h-full w-[clamp(320px,30vw,364px)] shrink-0 flex-col gap-[13px] overflow-hidden border-r border-neutral-200 bg-[#FAFAFA] py-4">
-      <h1 className="px-4 text-base font-semibold text-neutral-950">Чаты</h1>
+    <section className="flex h-full w-[clamp(320px,30vw,364px)] shrink-0 flex-col gap-[13px] overflow-hidden border-r border-border bg-card py-4 text-card-foreground">
+      <h1 className="px-4 text-base font-semibold text-foreground">Чаты</h1>
 
       <div className="flex items-center gap-3 px-4">
         <div className="relative flex-1">
-          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" />
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input placeholder="Поиск" className="pl-9" />
         </div>
-        <label className="flex min-w-0 shrink-0 cursor-pointer items-center gap-2 text-sm text-neutral-600">
+        <label className="flex min-w-0 shrink-0 cursor-pointer items-center gap-2 text-sm text-muted-foreground">
           <Switch
             checked={unreadOnly}
             onCheckedChange={onUnreadOnlyChange}
@@ -82,8 +82,8 @@ export function ChatList({
                   className={cn(
                     "grid h-5 min-w-5 shrink-0 place-items-center rounded-full px-1.5 text-[11px] font-semibold leading-none",
                     counts[filter.key] > 0
-                      ? "bg-metel-blue text-white"
-                      : "bg-neutral-200 text-neutral-500",
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted text-muted-foreground",
                   )}
                 >
                   {counts[filter.key]}
@@ -103,14 +103,14 @@ export function ChatList({
                 type="button"
                 onClick={() => onChatSelect(chat.id)}
                 className={cn(
-                  "flex w-full min-w-0 items-center gap-3 rounded-[10px] px-4 py-3 text-left transition-colors hover:bg-neutral-100",
-                  activeChatId === chat.id && "bg-[#F5F5F5]",
+                  "flex w-full min-w-0 items-center gap-3 rounded-[10px] px-4 py-3 text-left text-foreground transition-colors hover:bg-accent hover:text-accent-foreground",
+                  activeChatId === chat.id && "bg-accent text-accent-foreground",
                 )}
               >
                 <UserAvatar name={chat.name} src={chat.avatarUrl} className="h-10 w-10 shrink-0" />
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-semibold text-neutral-950">{chat.name}</span>
-                  <span className="mt-1 block truncate text-sm text-neutral-500">{chat.lastMessage}</span>
+                  <span className="block truncate text-sm font-semibold text-foreground">{chat.name}</span>
+                  <span className="mt-1 block truncate text-sm text-muted-foreground">{chat.lastMessage}</span>
                 </span>
                 {chat.unread > 0 ? <Badge className="shrink-0">{chat.unread}</Badge> : null}
               </button>
@@ -119,9 +119,9 @@ export function ChatList({
         </ScrollArea>
       ) : (
         <div className="grid min-h-0 flex-1 place-items-center px-4">
-          <div className="flex max-w-[220px] flex-col items-center text-center text-neutral-500">
-            <MessagesSquare className="mb-3 h-12 w-12 text-neutral-400" strokeWidth={1.8} />
-            <p className="text-sm font-medium text-neutral-600">Диалоги отсутствуют</p>
+          <div className="flex max-w-[220px] flex-col items-center text-center text-muted-foreground">
+            <MessagesSquare className="mb-3 h-12 w-12 text-muted-foreground" strokeWidth={1.8} />
+            <p className="text-sm font-medium text-muted-foreground">Диалоги отсутствуют</p>
           </div>
         </div>
       )}

@@ -114,14 +114,14 @@ input {
 
 .bubble-out::after {
   right: -7px;
-  background: #1f5aaa;
+  background: hsl(var(--primary));
   border-bottom-left-radius: 14px;
   clip-path: polygon(0 0, 100% 100%, 0 100%);
 }
 
 .bubble-in::after {
   left: -7px;
-  background: #e9e9ef;
+  background: hsl(var(--muted));
   border-bottom-right-radius: 14px;
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
 }

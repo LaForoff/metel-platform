@@ -62,7 +62,7 @@ function ResponsiveName({ name }: { name: string }) {
 
   return (
     <div className="relative min-w-0 w-full">
-      <h2 ref={containerRef} className="w-full min-w-0 truncate text-base font-semibold text-neutral-950">
+      <h2 ref={containerRef} className="w-full min-w-0 truncate text-base font-semibold text-foreground">
         {displayName}
       </h2>
       <span
@@ -118,14 +118,14 @@ export function ChatWindow({ chat, onSendMessage }: ChatWindowProps) {
   }
 
   return (
-    <section className="flex min-w-0 flex-1 flex-col bg-[#F7F7F8]">
-      <header className="flex h-[59px] shrink-0 items-center justify-between border-b border-neutral-200 bg-[#FBFBFB] px-6">
+    <section className="flex min-w-0 flex-1 flex-col bg-background text-foreground">
+      <header className="flex h-[59px] shrink-0 items-center justify-between border-b border-border bg-card px-6 text-card-foreground">
         <div className="flex min-w-0 flex-1 items-center gap-3">
           <UserAvatar name={chat.name} src={chat.avatarUrl} className="h-10 w-10" />
           <div className="min-w-0 flex-1">
             <ResponsiveName name={chat.name} />
-            <p className={cn("flex items-center gap-1.5 text-xs font-medium", chat.online ? "text-green-600" : "text-neutral-400")}>
-              <span className={cn("h-1.5 w-1.5 rounded-full", chat.online ? "bg-green-600" : "bg-neutral-400")} />
+            <p className={cn("flex items-center gap-1.5 text-xs font-medium", chat.online ? "text-green-600" : "text-muted-foreground")}>
+              <span className={cn("h-1.5 w-1.5 rounded-full", chat.online ? "bg-green-600" : "bg-muted-foreground")} />
               {chat.online ? "В сети" : "Не в сети"}
             </p>
           </div>
@@ -169,10 +169,10 @@ export function ChatWindow({ chat, onSendMessage }: ChatWindowProps) {
             >
               <div
                 className={cn(
-                  "relative max-w-[520px] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-snug shadow-[0_1px_0_rgba(0,0,0,0.02)]",
+                  "relative max-w-[520px] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-snug shadow-sm",
                   message.direction === "outgoing"
-                    ? "bubble-out rounded-br-md bg-metel-blue text-white"
-                    : "bubble-in rounded-bl-md bg-[#E9E9EF] text-neutral-950",
+                    ? "bubble-out rounded-br-md bg-primary text-primary-foreground"
+                    : "bubble-in rounded-bl-md bg-muted text-foreground",
                 )}
               >
                 {message.text}
@@ -184,7 +184,7 @@ export function ChatWindow({ chat, onSendMessage }: ChatWindowProps) {
 
       <form
         onSubmit={onSubmit}
-        className="flex min-h-[60px] shrink-0 items-end gap-2 border-t border-neutral-200 bg-white px-4 py-2.5"
+        className="flex min-h-[60px] shrink-0 items-end gap-2 border-t border-border bg-card px-4 py-2.5"
       >
         <Button variant="ghost" size="icon" type="button" title="Прикрепить файл">
           <Paperclip className="h-5 w-5" />
