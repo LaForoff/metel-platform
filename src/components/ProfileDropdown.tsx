@@ -1,5 +1,6 @@
 import { ChevronUp, CircleUserRound, LogOut, SlidersHorizontal } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { useTheme } from "./theme-provider";
 import { UserAvatar } from "./ui/avatar";
 import { Button } from "./ui/button";
 import {
@@ -9,6 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 
 const profileAvatarUrl =
   "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=facearea&facepad=2&w=160&h=160&q=80";
@@ -18,6 +20,8 @@ type ProfileDropdownProps = {
 };
 
 export function ProfileDropdown({ compact = false }: ProfileDropdownProps) {
+  const { theme, setTheme } = useTheme();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -74,6 +78,18 @@ export function ProfileDropdown({ compact = false }: ProfileDropdownProps) {
           <LogOut className="h-4 w-4" />
           Выйти
         </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <div className="p-1">
+          <Tabs
+            value={theme === "dark" ? "dark" : "light"}
+            onValueChange={(value) => setTheme(value as "light" | "dark")}
+          >
+            <TabsList className="grid h-10 w-full grid-cols-2 rounded-lg">
+              <TabsTrigger value="light" className="h-8 px-2">Светлая</TabsTrigger>
+              <TabsTrigger value="dark" className="h-8 px-2">Тёмная</TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );

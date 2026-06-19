@@ -5,8 +5,10 @@ import { ChatsPage } from "../pages/ChatsPage";
 import { EmployeesPage } from "../pages/EmployeesPage";
 import { SettingsPage } from "../pages/SettingsPage";
 import { TasksPage } from "../pages/TasksPage";
+import { UiPreviewPage } from "../pages/UiPreviewPage";
 
 export const router = createBrowserRouter([
+  { path: "ui-preview", element: <UiPreviewPage /> },
   {
     element: <AppLayout />,
     children: [
