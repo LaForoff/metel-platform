@@ -1,0 +1,13 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+.env
+.env.*
+.vscode/
+.idea/
+
+# Local backups and generated Vite config output
+backups/
+vite.config.js
+vite.config.d.ts
