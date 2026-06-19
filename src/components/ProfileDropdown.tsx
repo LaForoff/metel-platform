@@ -28,9 +28,9 @@ export function ProfileDropdown({ compact = false }: ProfileDropdownProps) {
         {compact ? (
           <Button
             type="button"
-            variant="outline"
+            variant="ghost"
             size="icon"
-            className="h-11 w-11 rounded-full shadow-sm hover:bg-accent"
+            className="h-11 w-11 rounded-full border-0 bg-transparent shadow-none hover:bg-sidebar-accent"
             title="Дмитрий Жданов"
           >
             <UserAvatar name="Дмитрий Жданов" src={profileAvatarUrl} className="h-9 w-9" />
@@ -38,8 +38,8 @@ export function ProfileDropdown({ compact = false }: ProfileDropdownProps) {
         ) : (
           <Button
             type="button"
-            variant="outline"
-            className="h-auto w-full justify-start gap-3 px-3 py-2 text-left shadow-sm hover:bg-accent"
+            variant="ghost"
+            className="h-auto w-full justify-start gap-3 border-0 bg-transparent px-3 py-2 text-left shadow-none hover:bg-sidebar-accent"
           >
             <UserAvatar name="Дмитрий Жданов" src={profileAvatarUrl} className="h-8 w-8" />
             <span className="min-w-0 flex-1">
