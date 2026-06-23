@@ -1,4 +1,11 @@
-import { CheckSquare, MessagesSquare, Phone, UsersRound } from "lucide-react";
+import {
+  CheckSquare,
+  MessagesSquare,
+  PanelLeftClose,
+  PanelLeftOpen,
+  Phone,
+  UsersRound,
+} from "lucide-react";
 import { NavLink } from "react-router-dom";
 import logoLightTheme from "../assets/logo-light-theme.svg";
 import logoSmallLightTheme from "../assets/logo-small-light-theme.svg";
@@ -28,41 +35,54 @@ export function Sidebar({ collapsed, canToggle, onToggle }: SidebarProps) {
       )}
     >
       <div>
-        <div className={cn("mb-7 flex h-7 items-center", collapsed && "justify-center")}>
+        <div
+          className={cn(
+            "mb-6 flex h-8 items-center justify-between",
+            collapsed && "mb-7 h-auto flex-col justify-start gap-4",
+          )}
+        >
           {collapsed ? (
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              onClick={onToggle}
-              disabled={!canToggle}
-              className={cn(
-                "h-9 w-9 rounded-lg",
-                canToggle ? "cursor-pointer" : "cursor-default",
-              )}
-              title={canToggle ? "Развернуть меню" : "Недостаточно места для раскрытия"}
-            >
-              <img src={logoSmallLightTheme} alt="МЕТЭЛ" className="h-6 w-6" />
-            </Button>
-          ) : (
-            <div className="relative">
-              <img src={logoLightTheme} alt="МЕТЭЛ" className="h-[22px] w-auto" />
-              <img
-                src={logoLightTheme}
-                alt=""
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 hidden h-[22px] w-auto brightness-0 invert [clip-path:inset(0_0_0_21px)] dark:block"
-              />
+            <>
               <Button
                 type="button"
                 variant="ghost"
                 size="icon-sm"
                 onClick={onToggle}
-                className="absolute left-0 top-1/2 h-7 w-7 -translate-y-1/2 rounded-md hover:bg-sidebar-accent"
-                title="Свернуть меню"
-                aria-label="Свернуть меню"
-              />
-            </div>
+                disabled={!canToggle}
+                className={cn(
+                  "h-8 w-8 rounded-lg p-2 hover:bg-sidebar-accent",
+                  canToggle ? "cursor-pointer" : "cursor-default",
+                )}
+                title={canToggle ? "Развернуть боковую панель" : "Недостаточно места для раскрытия"}
+                aria-label="Развернуть боковую панель"
+              >
+                <PanelLeftOpen className="h-4 w-4" />
+              </Button>
+              <img src={logoSmallLightTheme} alt="МЕТЭЛ" className="h-6 w-6" />
+            </>
+          ) : (
+            <>
+              <div className="relative">
+                <img src={logoLightTheme} alt="МЕТЭЛ" className="h-[22px] w-auto" />
+                <img
+                  src={logoLightTheme}
+                  alt=""
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 hidden h-[22px] w-auto brightness-0 invert [clip-path:inset(0_0_0_21px)] dark:block"
+                />
+              </div>
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-sm"
+                onClick={onToggle}
+                className="h-8 w-8 rounded-lg p-2 hover:bg-sidebar-accent"
+                title="Свернуть боковую панель"
+                aria-label="Свернуть боковую панель"
+              >
+                <PanelLeftClose className="h-4 w-4" />
+              </Button>
+            </>
           )}
         </div>
 

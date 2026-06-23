@@ -74,7 +74,7 @@ export function ProfileDropdown({ compact = false }: ProfileDropdownProps) {
           </NavLink>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem variant="destructive">
+        <DropdownMenuItem>
           <LogOut className="h-4 w-4" />
           Выйти
         </DropdownMenuItem>
